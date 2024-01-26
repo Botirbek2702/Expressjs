@@ -22,7 +22,7 @@ app.use(express.json())
 
 
 mongoose.set("strictQuery" , false)
-mongoose.connect(process.env.Mongo_Uri, () => console.log("Mongodb conected"))
+mongoose.connect(process.env.Mongo_Uri,{ useNewUrlParser: true }, () => console.log("Mongodb conected"))
 
 const PORT =process.env.PORT || 3000
 app.listen(PORT, () => {
