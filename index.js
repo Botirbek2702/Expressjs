@@ -19,7 +19,8 @@ app.use(product)
 
 
 
-
+//1GN32zKYNIeLQLeL  
+//mongodb+srv://userbotirbek2702:<password>@cluster0.h3tbroj.mongodb.net/?retryWrites=true&w=majority
 const PORT =process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
