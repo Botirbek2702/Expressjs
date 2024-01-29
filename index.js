@@ -5,6 +5,8 @@ import auth from "./views/routes/auth.js"
 import product from "./views/routes/product.js"
 import mongoose from "mongoose";
 dotenv.config()
+// DB connect
+mongoose.connect(process.env.Mongo_Uri,).then(() =>console.log("MONGODB connect"),).catch((err) => console.log("ERRor" , err))
 
 const app = express()
 
