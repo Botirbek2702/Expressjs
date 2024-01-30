@@ -1,5 +1,5 @@
 import {Router} from "express"
-import User from "/Botirbek/ExpresJs/Model/User.js"
+import User from "/Expressjs/Model/User.js"
 const router = Router()
 
 router.get('/login' , (req,res) =>{
