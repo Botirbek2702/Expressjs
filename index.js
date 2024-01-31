@@ -4,6 +4,8 @@ import * as dotenv from "dotenv"
 import auth from "./views/routes/auth.js"
 import product from "./views/routes/product.js"
 import mongoose from "mongoose";
+import flash from "connect-flash"
+import session from "express-session"
 dotenv.config()
 // DB connect
 mongoose.connect(process.env.Mongo_Uri,).then(() =>console.log("MONGODB connect"),).catch((err) => console.log("ERRor" , err))
@@ -18,6 +20,8 @@ app.set('views', './views');
 
 app.use(express.static("public"))
 app.use(express.urlencoded({extended:true}))
+app.use(session({secret: "Botir" , resave:false , saveUninitialized :false}))
+app.use(flash())
 app.use(express.json())
 
 
