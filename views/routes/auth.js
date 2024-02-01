@@ -1,6 +1,7 @@
 import {Router} from "express"
 import User from "/Botirbek/ExpresJs/Model/User.js"
 import bcrypt from "bcrypt"
+import {generateJWTToken}  from "/Botirbek/ExpresJs/servises/token.js"
 
 const router = Router()
 
@@ -68,7 +69,8 @@ router.post("/register", async (req,res) => {
         password: hashpass,
     }
     const user = await User.create(userData)
-    console.log(user);
+    const token = generateJWTToken(user._id)
+    console.log(token);
     res.redirect('/')
 })
 
