@@ -9,9 +9,14 @@
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         <a class="me-3 py-2 link-body-emphasis text-decoration-none " href="/product">Products</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none " href="/add">Add</a>
+
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          {{#if token}}
+              <button type="button" class="btn btn-danger"><a href="/logout" class="text-light text-decoration-none">Logout</a></button>
+          {{else}}
             <button type="button" class="btn btn-primary"><a href="/login" class="text-light text-decoration-none">Login</a></button>
             <button type="button" class="btn btn-success"><a href="/register" class="text-light text-decoration-none">Register</a></button>
+          {{/if}}
         </div>
       </nav>
     </div>

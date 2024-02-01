@@ -6,6 +6,10 @@ import {generateJWTToken}  from "/Botirbek/ExpresJs/servises/token.js"
 const router = Router()
 
 router.get('/login' , (req,res) =>{
+    if(req.cookies.token){
+        res.redirect("/")
+        return
+    }
     res.render("login" ,{
         title:"login",
         loginError: req.flash("loginError")
@@ -41,12 +45,20 @@ router.post("/login" , async (req,res) =>{
         return
     }
     console.log("Correct");
+    const token = generateJWTToken(existUser._id)
+    res.cookie("token" , token , {httpOnly:true , secure:true})
     res.redirect('/')
+})
+router.get("/logout" , (req , res) =>{
+    res.clearCookie("token")
+    res.redirect("/")
 })
 router.post("/register", async (req,res) => {
     const {firstName, lastName,email,password} = req.body
-
-    
+    if(req.cookies.token){
+        res.redirect("/")
+        return
+    }
     if(!firstName || !lastName || !email || !password){
         req.flash("registerError" , "Hammasini to'ldiring ")
         res.redirect("/register")
@@ -70,7 +82,7 @@ router.post("/register", async (req,res) => {
     }
     const user = await User.create(userData)
     const token = generateJWTToken(user._id)
-    console.log(token);
+    res.cookie("token" , token , {httpOnly:true , secure:true})
     res.redirect('/')
 })
 
