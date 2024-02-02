@@ -16,4 +16,8 @@ router.get('/product' , (req,res) =>{
         title:"product"
     })
 })
+router.post("/add-product" , (req,res) =>{
+    console.log(req.body);
+    res.redirect("/")
+})
 export default router

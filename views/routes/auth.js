@@ -1,7 +1,7 @@
 import {Router} from "express"
-import User from "/Botirbek/ExpresJs/Model/User.js"
+import User from "/Expressjs/Model/User.js"
 import bcrypt from "bcrypt"
-import {generateJWTToken}  from "/Botirbek/ExpresJs/servises/token.js"
+import {generateJWTToken}  from "/Expressjs/servises/token.js"
 
 const router = Router()
 
