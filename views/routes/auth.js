@@ -1,7 +1,7 @@
 import {Router} from "express"
-import User from "/Expressjs/Model/User.js"
+import User from "/Botirbek/ExpresJs/Model/User.js"
 import bcrypt from "bcrypt"
-import {generateJWTToken}  from "/Expressjs/servises/token.js"
+import {generateJWTToken}  from "/Botirbek/ExpresJs/servises/token.js"
 
 const router = Router()
 
@@ -44,7 +44,6 @@ router.post("/login" , async (req,res) =>{
         res.redirect("/login")
         return
     }
-    console.log("Correct");
     const token = generateJWTToken(existUser._id)
     res.cookie("token" , token , {httpOnly:true , secure:true})
     res.redirect('/')
