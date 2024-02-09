@@ -8,13 +8,15 @@ import flash from "connect-flash"
 import session from "express-session"
 import varMidle from "./midle/var.js"
 import cookieParser from "cookie-parser";
+import userMD from "./midle/userMD.js";
+import hbsEqual from "./Utils/index.js"
 dotenv.config()
 // DB connect
 mongoose.connect(process.env.Mongo_Uri,).then(() =>console.log("MONGODB connect"),).catch((err) => console.log("ERRor" , err))
 
 const app = express()
 
-const hbs =create({defaultLayout: "main" , extname: "hbs"})
+const hbs =create({defaultLayout: "main" , extname: "hbs", helpers : hbsEqual })
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -27,6 +29,7 @@ app.use(flash())
 app.use(cookieParser())
 app.use(express.json())
 app.use(varMidle)
+app.use(userMD)
 
 
 app.use(auth)
